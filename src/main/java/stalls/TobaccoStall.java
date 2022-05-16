@@ -1,6 +1,7 @@
 package stalls;
 
 import behaviours.ISecurity;
+import people.Visitor;
 
 public class TobaccoStall extends Stall implements ISecurity {
 
@@ -8,5 +9,12 @@ public class TobaccoStall extends Stall implements ISecurity {
         super(name, ownerName, parkingSpot);
     }
 
+    public boolean isAllowedTo(Visitor visitor){
+        if (visitor.getAge() >= 18){
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }
