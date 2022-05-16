@@ -13,6 +13,8 @@ public class RollercoasterTest {
     Visitor tallTenYearOld;
     Visitor shortThirteenYearOld;
     Visitor tallThirteenYearOld;
+    Visitor tallPerson;
+    Visitor averagePerson;
 
     @Before
     public void setUp() {
@@ -22,6 +24,8 @@ public class RollercoasterTest {
         tallTenYearOld = new Visitor(10, 150, 10.60);
         shortThirteenYearOld = new Visitor(13, 130, 15.00);
         tallThirteenYearOld = new Visitor(13, 155, 20.00);
+        tallPerson = new Visitor(21, 210, 50.00);
+        averagePerson = new Visitor(21, 165, 50.00);
     }
 
     @Test
@@ -57,5 +61,19 @@ public class RollercoasterTest {
     @Test
     public void allowsTall13YearOld() {
         assertEquals(true, rollerCoaster.isAllowedTo(tallThirteenYearOld));
+    }
+
+    @Test
+    public void returnsDefaultPrice() {
+        assertEquals(8.40, rollerCoaster.defaultPrice(), 0.0);
+    }
+
+    @Test
+    public void returnsDoublePriceTallPerson() {
+        assertEquals(16.80, rollerCoaster.priceFor(tallPerson), 0.0);
+    }
+    @Test
+    public void returnsDefaultPriceAveragePerson() {
+        assertEquals(8.40, rollerCoaster.priceFor(averagePerson), 0.0);
     }
 }
